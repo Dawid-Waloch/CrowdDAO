@@ -1,0 +1,23 @@
+{
+  "name": "crowddao",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dawid-Waloch/CrowdDAO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dawid-Waloch/CrowdDAO/issues"
+  },
+  "homepage": "https://github.com/Dawid-Waloch/CrowdDAO#readme",
+  "description": "",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0"
+  }
+}

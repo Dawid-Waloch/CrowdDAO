@@ -12,6 +12,7 @@ contract CrowdDAO {
         string description;
         address recipient;
         uint value;
+        mapping(address => bool) voters;
         uint[2] votes;
         ProposalStatus status;
     }
@@ -34,14 +35,15 @@ contract CrowdDAO {
 
     function createProposal(string memory purpose, uint value) public {
         require(token.balanceOf(msg.sender) > 0, "You don't have tokens so you can't create proposals");
-        Proposal memory newProposal = Proposal({
-            description: purpose,
-            recipient: msg.sender,
-            value: value,
-            votes: [uint(0), uint(0)],
-            status: ProposalStatus.Otwarta
-        });
-        proposals.push(newProposal);
+
+        proposals.push();
+        Proposal storage newProposal = proposals[proposals.length - 1];
+
+        newProposal.description = purpose;
+        newProposal.recipient = msg.sender;
+        newProposal.value = value;
+        newProposal.votes = [uint(0), uint(0)];
+        newProposal.status = ProposalStatus.Otwarta;
     }
 
 }

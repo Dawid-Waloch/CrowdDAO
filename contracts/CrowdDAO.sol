@@ -64,4 +64,24 @@ contract CrowdDAO {
         proposal.voters[msg.sender] = true;
     }
 
+    function getProposal(uint proposalIndex) public view returns (
+        string memory description,
+        address recipient,
+        uint value,
+        uint yesVotes,
+        uint noVotes,
+        ProposalStatus status
+    ) {
+        Proposal storage proposal = proposals[proposalIndex];
+
+        return (
+            proposal.description,
+            proposal.recipient,
+            proposal.value,
+            proposal.votes[0],
+            proposal.votes[1],
+            proposal.status
+        );
+    }
+
 }

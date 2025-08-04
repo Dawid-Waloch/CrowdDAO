@@ -21,11 +21,12 @@ contract CrowdDAO {
     IGovernanceToken public token;
     uint public rate;
     Proposal[] public proposals;
-    address manager;
+    address public manager;
 
     constructor(address tokenAddress) {
         token = IGovernanceToken(tokenAddress);
         rate = 1;
+        manager = msg.sender;
     }
 
     function contribute() public payable {
@@ -33,7 +34,6 @@ contract CrowdDAO {
 
         uint amount = (msg.value * rate) / 1 ether;
         token.mint(msg.sender, amount);
-        manager = msg.sender;
     }
 
     function createProposal(string memory purpose, uint value, address recipient) public {
@@ -67,12 +67,14 @@ contract CrowdDAO {
         proposal.voters[msg.sender] = true;
     }
 
-    function executeProposal(uint proposalIndex) public onlyOwner {
+    function executeProposal(uint proposalIndex) public onlyManager {
         require(proposals[proposalIndex].status == ProposalStatus.Otwarta, "Proposal have been already realized, You can't execute it twice");
 
         Proposal storage proposal = proposals[proposalIndex];
-        payable(proposal.recipient).transfer(proposal.value);
-        proposal.status = ProposalStatus.Zamknieta;
+        if(proposal.votes[0] > proposal.votes[1]) {
+            payable(proposal.recipient).transfer(proposal.value);
+            proposal.status = ProposalStatus.Zamknieta;
+        }
     }
 
     function getProposal(uint proposalIndex) public view returns (
@@ -95,7 +97,7 @@ contract CrowdDAO {
         );
     }
 
-    modifier onlyOwner() {
+    modifier onlyManager() {
         require(msg.sender == manager, "You aren't an owner");
         _;
     }

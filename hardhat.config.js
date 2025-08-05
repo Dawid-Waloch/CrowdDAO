@@ -4,6 +4,7 @@ import "@nomicfoundation/hardhat-toolbox";
 export default {
   solidity: "0.8.28",
   paths: {
-    sources: "./ethereum/contracts"
+    sources: "./ethereum/contracts",
+    ignition: "./ethereum/ignition"
   }
 };

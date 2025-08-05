@@ -2,4 +2,3 @@
 node_modules
 artifacts
 .states
-hardhat.config.js

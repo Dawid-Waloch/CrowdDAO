@@ -3,7 +3,7 @@ import crowdDAOAbi from "./ignition/deployments/chain-11155111/artifacts/Contrac
 import initContract from "./ethers";
 
 const getCrowdDAOContract = async () => {
-    return await initContract(deployedAddress["ContractsDeployment#CrowdDAO"], crowdDAOAbi.abi);
+    return await initContract(deployedAddress["ContractsDeployment#CrowdDAO"], crowdDAOAbi);
 }
 
 export default getCrowdDAOContract;

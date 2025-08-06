@@ -3,7 +3,7 @@ import governanceTokenAbi from "./ignition/deployments/chain-11155111/artifacts/
 import initContract from "./ethers";
 
 const getGovernanceTokenContract = async () => {
-    return await initContract(deployedAddress["ContractsDeployment#GovernanceToken"], governanceTokenAbi.abi);
+    return await initContract(deployedAddress["ContractsDeployment#GovernanceToken"], governanceTokenAbi);
 }
 
 export default getGovernanceTokenContract;

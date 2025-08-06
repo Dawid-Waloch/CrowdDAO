@@ -13,3 +13,13 @@ const connectWallet = async () => {
         alert("You have to install MetaMask!");
     }
 }
+
+const initContract = (contractAddress, contractAbi) => {
+    const { signer } = connectWallet();
+    if(!signer) return null;
+    const contract = ethers.Contract(contractAddress, contractAbi.abi, signer);
+
+    return contract;
+};
+
+export default initContract;

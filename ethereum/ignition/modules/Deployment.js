@@ -1,4 +1,4 @@
-const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 export default buildModule("ContractsDeployment", (m) => {
     const token = m.contract("GovernanceToken");

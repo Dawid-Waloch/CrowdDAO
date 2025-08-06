@@ -6,7 +6,7 @@ const connectWallet = async () => {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
         const walletAddress = await signer.getAddress();
-        const balance = provider.getBalance(walletAddress);
+        const balance = await provider.getBalance(walletAddress);
 
         return { provider, signer, balance };
     } else {
@@ -14,10 +14,10 @@ const connectWallet = async () => {
     }
 }
 
-const initContract = (contractAddress, contractAbi) => {
-    const { signer } = connectWallet();
-    if(!signer) return null;
-    const contract = ethers.Contract(contractAddress, contractAbi.abi, signer);
+const initContract = async (contractAddress, contractAbi) => {
+    const wallet = await connectWallet();
+    if(!wallet || !wallet.signer) return null;
+    const contract = new ethers.Contract(contractAddress, contractAbi.abi, signer);
 
     return contract;
 };

@@ -1,5 +1,7 @@
 import "@nomicfoundation/hardhat-toolbox";
-require("dotenv").config();
+import dotenv from "dotenv";
+
+dotenv.config();
 
 export default {
   solidity: "0.8.28",
@@ -8,7 +10,9 @@ export default {
     ignition: "./ethereum/ignition"
   },
   networks: {
-    url: process.env.SEPOLIA_RPC,
-    accounts: [process.env.PRIVATE_KEY]
+    sepolia: {
+      url: process.env.SEPOLIA_RPC,
+      accounts: [process.env.PRIVATE_KEY]
+    }
   }
 };

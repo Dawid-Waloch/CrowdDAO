@@ -17,7 +17,7 @@ const connectWallet = async () => {
 const initContract = async (contractAddress, contractAbi) => {
     const wallet = await connectWallet();
     if(!wallet || !wallet.signer) return null;
-    const contract = new ethers.Contract(contractAddress, contractAbi.abi, signer);
+    const contract = new ethers.Contract(contractAddress, contractAbi.abi, wallet.signer);
 
     return contract;
 };

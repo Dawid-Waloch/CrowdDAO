@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
+    border-radius: 4px;
     background-color: black;
     padding: 1rem;
     display: flex;

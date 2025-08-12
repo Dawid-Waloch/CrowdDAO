@@ -1,15 +1,15 @@
 import React from "react";
-import { Logo, Nav } from "./NavbarStyled";
+import { ListElements, ListWrapper, Nav } from "./NavbarStyled";
 import Link from "../LinkStyled"
 
 const Navbar = () => (
   <Nav>
-    <Logo>
-        <Link href={'/'}>CrowdDAO</Link>
-    </Logo>
-    <div>
-        <Link href={'/proposals'}>Proposals</Link>
-    </div>
+    <Link href={'/'}>CrowdDAO</Link>
+    <ListWrapper>
+      <ListElements>
+          <Link href={'/proposals'}>Proposals</Link>
+      </ListElements>
+    </ListWrapper>
   </Nav>
 );
 

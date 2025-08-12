@@ -1,16 +1,19 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-    background: black;
-    border-radius: 1em;
-    padding: 0rem 2rem;
+    background-color: black;
+    padding: 1rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-    
+    justify-content: center;
 `;
 
-export const Logo = styled.h1`
-    font-size: 1.5rem;
-`;
+export const ListWrapper = styled.ul`
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+`
+
+export const ListElements = styled.li`
+    margin: 0 1rem;
+`
